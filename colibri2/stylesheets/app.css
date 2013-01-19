@@ -1,0 +1,205 @@
+/* Foundation v2.2.1 http://foundation.zurb.com */
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+body{
+	font-family: Bitter, Enriqueta, Merriweather, Cambria, "Droid Serif", "Palatino", "Palatino Linotype", Georgia, serif;
+	background-color: #F9F9F9
+}
+p{
+	font-size: 1.73rem;
+line-height: 2.5rem;
+}
+li{font-size: 1.6rem}
+pre{
+	font-size: 1.6rem;
+font-family: monospace;
+line-height: 1.4rem;
+}
+h1{font-size: 3.6rem;}
+h2{font-size: 3rem;}
+h3{font-size: 2.4rem;}
+blockquote{
+	padding: 9px 20px 1px 19px;
+	border-left: 0;
+	background: rgba(255, 231, 1, .5);
+	font-style: italic;
+	font-family: Arial, Helvetica, Liberation Sans, sans-serif;
+}
+blockquote p{
+	line-height: 2rem;
+	font-size: 1.54rem;
+}
+a{color: #FE3980}
+a:hover{text-decoration: underline}
+
+	.hidden{display: none}
+	.aligncenter{
+		display: block;
+		margin: 10px auto
+	}
+	.wp-caption{position: relative;}
+	.wp-caption-text{
+		position: absolute;
+		left: -360px;
+		top: 50%;
+		height: 40px;
+		padding: 10px;
+		margin-top: -30px;
+		background: #F3F3F3;
+		-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.2);
+		-moz-box-shadow: inset 0 0 3px rgba(0,0,0,.2);
+		box-shadow: inset 0 0 3px rgba(0,0,0,.2);
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		font-family: Arial;
+		font-size: 1.5rem;
+		width: 260px;
+	}
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+#banner{
+	background: url(../images/head.png) no-repeat center top;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	height: 180px;
+	border-bottom: 3px solid white;
+	position: relative;
+	-webkit-box-shadow: 3px 0 5px rgba(0,0,0,.32);
+	-moz-box-shadow: 3px 0 5px rgba(0,0,0,.32);
+	box-shadow: 3px 0 5px rgba(0,0,0,.32);
+}
+
+	.rowTitle{
+		width: 43%;
+		height: 40px;
+		background: rgba(0, 0, 0, .5);
+		position: absolute;
+		top: 50%;
+		margin-top: -20px;
+		min-width: 320px;
+	}
+#banner h1{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	margin-left: 0;
+	color: #FE3980;
+	font-weight: normal;
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	left: 20%;
+	}
+#logo{
+	width: 141px;
+	height: 89px;
+	position: absolute;
+	top: 50%;
+	margin-top: -45px;
+	left: 8%
+}
+
+
+
+.about{
+	margin: 0 auto;
+	position: relative;
+	height: 100%;
+	width: 1000px
+}
+.caption{
+	width: 100%;
+	height: 165px;
+	border: 3px solid white;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.12);
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,.12);
+	box-shadow: 0 0 5px rgba(0,0,0,.12);
+	margin-top: 50px;
+}
+.contenu{
+	margin-top: 50px;
+}
+
+.contenu img{
+	border: 3px solid white;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,.2);
+	box-shadow: 0 0 5px rgba(0,0,0,.2);
+
+}
+
+.information{
+	background: #AA94E7 url(../images/information.jpg) no-repeat 5px 4px;
+	height: 40px;
+	padding: 10px 0;
+	margin: 10px 0 0 3px;
+}
+.information ul{margin-left: 60px;}
+.information li{
+	margin-bottom: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	color: white;
+	font-size: 1.7rem;
+}
+/* -----------------------------------------
+   Page Name 1
+----------------------------------------- */
+
+.rowColor{
+	height: 40px;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 115px;
+	margin-left: -100%;
+}
+
+.yellow{background: #FFE701}
+.green{background: #89E78F}
+.blue{background:#0CD1FE}
+.magenta{background: #FE3980}
+.violet{background: #AA94E7}
+
+.boxRow{
+	width: 20%;
+	height: 100%;
+	position: absolute;
+	border-left: 1px solid white
+}
+
+.boxRow.yellow{left: 80%}
+.boxRow.green{left: 60%}
+.boxRow.blue{left: 40%}
+.boxRow.magenta{left:20%}
+.boxRow.violet{left: 0}
+.boxRow:first-child{border: 0}
+
+.colorHead{
+	width: 100%;
+	height: 4px;
+	position: relative;
+	opacity: 0.5;
+	-moz-opacity: 0.5;
+	filter:alpha(opacity=5);
+}
+.no-opacity{opacity: 1;
+-moz-opacity: 1;
+filter:alpha(opacity=1);}
+/* -----------------------------------------
+   Page Name 2
+----------------------------------------- */
+
+

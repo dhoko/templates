@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Welcome to Foundation</title>
+  
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="stylesheets/default.css">
+	<link rel="stylesheet" href="stylesheets/app.css">
+	<link rel="stylesheet" href="grid.css">
+
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="stylesheets/ie.css">
+	<![endif]-->
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Bitter:400,700,400italic" rel="stylesheet" type="text/css">
+	<script src="javascripts/modernizr.foundation.js"></script>
+
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+
+	<header id="banner">
+		<div class="colorHead">
+			<div class="boxRow violet"></div>
+			<div class="boxRow magenta"></div>
+			<div class="boxRow blue"></div>
+			<div class="boxRow green"></div>
+			<div class="boxRow yellow"></div>
+		</div>
+		<div class="rowTitle"></div>
+		<div class="about">
+			<figure id="logo">
+				<img src="images/logo.png" alt="Le colibri Libre">
+				<figcaption class="hidden">Le colibri Libre</figcaption>
+			</figure>
+			<h1>Le Colibri Libre</h1>
+		</div>
+	</header>
+
+	<!-- container -->
+	<div class="container_12">
+
+		<div class="grid_12 alpha omega">
+			<div class="rowColor yellow"></div>
+				<aside class="alpha columns grid_4 omega">
+
+					<div class="rowColor yellow"></div>
+					<figure class="caption">
+						<img src="images/caption.jpg" alt="placeholder+image">
+					</figure>
+
+					<div class="information">
+							<ul>
+								<li>Posté le: 21 Mai 2012</li>
+								<li>Ecrit par Dhoko</li>
+							</ul>
+					</div>
+				</aside>
+			
+			<div class="grid_7 contenu alpha">
+				<h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h1>
+				
+				<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+				
+				<h2>Header Level 2</h2>
+				
+				<ol>
+					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+					<li>Aliquam tincidunt mauris eu risus.</li>
+				</ol>
+				
+				<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+				
+				<h3>Header Level 3</h3>
+				
+				<ul>
+					<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+					<li>Aliquam tincidunt mauris eu risus.</li>
+				</ul>
+				
+				<pre><code>
+				#header h1 a { 
+					display: block; 
+					width: 300px; 
+					height: 80px; 
+				}
+				</code></pre>
+
+				<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+				<img class="aligncenter" src="images/image.jpg" alt="placeholder+image">
+
+				<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+				<div class="wp-caption aligncenter" style="width: 446px"><img class="ngg-singlepic ngg-center " src="images/image.jpg" alt="OLYMPUS DIGITAL CAMERA"><p class="wp-caption-text">Bienvenue à Wang Dum <br />
+					Source: <a href="#">http://9gag.com</a></p></div>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- container -->
+
+<div class="colorHead no-opacity">
+	<div class="boxRow violet"></div>
+	<div class="boxRow magenta"></div>
+	<div class="boxRow blue"></div>
+	<div class="boxRow green"></div>
+	<div class="boxRow yellow"></div>
+</div>
+
+
+	<!-- Included JS Files -->
+	<script src="javascripts/jquery.min.js"></script>
+	<script src="javascripts/foundation.js"></script>
+	<script src="javascripts/app.js"></script>
+
+</body>
+</html>
