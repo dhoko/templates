@@ -1,0 +1,40 @@
+<label for="toggle-sidebar" data-icon="≡" title="display sidebar"></label>
+<input type="checkbox" id="toggle-sidebar" />
+
+<section id="sidebar" role="complementary">
+  <ul class="color-row"><!--
+  --><li class="violet"></li><!--
+  	--><li class="magenta"></li><!--
+  	--><li class="blue"></li><!--
+  	--><li class="green"></li><!--
+  	--><li class="yellow"></li><!--
+  --></ul>
+
+  <header id="logo" role="banner">
+  	<figure>
+  		<img src="{{site_url}}images/colibri-logo-full.png" alt="Le Colibri Libre - logo">
+  		<figcaption>Au bon troll volant</figcaption>
+  	</figure>
+  	<h1><a href="/" title="Retour à la page d'accueil" rel="home">Dhoko, le colibri libre</a></h1>
+  	<h2>Un troll en libre service</h2>
+  </header>
+
+  <nav role="navigation">
+  	<ul>
+  		<li><a href="/" title="Page d'accueil" rel="home">Home</a></li>
+  		<li><a href="/contact.html" title="Me contacter">Contact</a></li>
+  		<li><a href="/archives.html" title="Archives du Colibri">Archives</a></li>
+  	</ul>
+
+  	<ul class="info-social">
+  		<li class="twitter"><a href="http://www.twitter.com/dhoko_">@dhoko_</a></li>
+  		<li class="github"><a href="https://github.com/dhoko">Github</a></li>
+  		<li class="gplus"><a href="https://plus.google.com/u/0/117654494916379328227/posts">Google Plus</a></li>
+  		<li class="rss"><a href="{{site_rss_url}}">RSS</a></li>
+  	</ul>
+  </nav>
+
+  <footer role="contentinfo">
+  	<a href="{{site_url}}" title="{{site_description}}">{{site_title}}</a> est un blog sous licence CC <br> Powered by <a href="https://github.com/dhoko/cyaneus" title="A static PHP blog generator">{{site_generator}}</a>
+  </footer>
+</section>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{post_lang}}"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="{{post_lang}}"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="{{post_lang}}"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{post_lang}}"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+<!-- 	Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>{{post_title}} - {{site_title}}</title>
+	<meta name="description" content="{{post_description}}" />
+	<meta name="author" content="{{post_author}}" />
+
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="{{site_url}}scripts/normalize-css/normalize.css" />
+	<link rel="alternate" type="application/rss+xml" href="{{site_rss_url}}" />
+	<link rel="stylesheet" type="text/css" href="{{site_css_url}}" />
+  <!-- <link rel="stylesheet" href="{{site_url}}app/components/prism/prism.css" /> -->
+
+
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+
+{{navigation}}
+
+<section id="content" role="main">
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+    <meta itemprop="inLanguage" content="{{post_lang}}"/>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name">{{post_title}}</h1>
+      <p class="post-informations">
+        Le <time class="post-update" pubdate datetime="{{post_date_rss}}" itemprop="datePublished">{{post_date}}</time> -
+        <span class="vcard">Publié par :
+          <span class="author fn" itemprop="author">{{post_author}}</span>
+        </span>
+      </p>
+    </header>
+    <div class="post-content" itemprop="articleBody">
+      {{post_content}}
+    </div>
+  </article>
+
+</section>
+
+<script>
+  (function () {
+    document.head.insertAdjacentHTML('beforeend','<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700" rel="stylesheet" type="text/css">');
+    document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="{{site_url}}scripts/prism/prism.css" />');
+
+    var script = document.createElement("script");
+        script.src = "{{site_url}}scripts/prism/prism.js";
+
+    document.body.appendChild(script);
+
+        // Activate Prism...
+        script.onload = function() {
+            Prism.highlightAll();
+        };
+
+  })();
+</script>
+</body>
+</html>

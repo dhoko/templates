@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="fr"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="fr"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="fr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Dhoko.me Main template</title>
+  
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="app/components/normalize-css/normalize.css" />
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="app/components/prism/prism.css" />
+	
+
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+
+<label for="toggle-sidebar" data-icon="≡" title="display sidebar"></label>
+<input type="checkbox" id="toggle-sidebar" />
+
+<section id="sidebar">
+
+	<ul class="color-row"><!--
+	--><li class="violet"></li><!--
+		--><li class="magenta"></li><!--
+		--><li class="blue"></li><!--
+		--><li class="green"></li><!--
+		--><li class="yellow"></li><!--
+	--></ul>
+
+	<header id="logo">
+		<figure>
+			<img src="images/colibri-logo-full.png" alt="Le Colibri Libre - logo">
+			<figcaption>Au bon troll volant</figcaption>
+		</figure>
+		<h1><a href="/">Dhoko, le colibri libre</a></h1>
+		<h2>Un troll en libre service</h2>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/contact.html">Contact</a></li>
+			<li><a href="/archives.html">Archives</a></li>
+		</ul>
+
+		<ul class="info-social">
+			<li class="twitter"><a href="#twitter">@dhoko_</a></li>
+			<li class="github"><a href="#github">Gthub</a></li>
+			<li class="gplus"><a href="#gplus">Google Plus</a></li>
+			<li class="rss"><a href="/rss.xml">RSS</a></li>
+		</ul>
+	</nav>
+
+	<footer>
+		<a href="/">Le Colibri Libre</a> est un blog sous licence CC - Powered by <a href="#cyaenues">Cyaneus</a>
+	</footer>
+</section>
+
+<section id="content">
+	<article class="post">
+		<header class="post-header">
+			<h1 class="post-title">AngularJS : i18n as a service</h1>
+			<time class="post-update">11 Aout 2013</time>
+		</header>
+		<div class="post-content">
+			<p>i18n et AngularJS, une vaste question. On trouve beaucoup de scripts et pas un seul DRY, j'ai donc fait le mien. Voilà pourquoi.</p>
+			<h2 id="au-commencement-li18n-sous-angular">Au commencement, l'i18n sous Angular</h2>
+			<p>C'est le néant, rien prévu pour dans Angular. Et nous pauvres développeurs comment devons-nous faire ?</p>
+			<h3 id="le-resultat-au-niveau-de-nos-templates">Le résultat au niveau de nos templates</h3>
+			<pre><code>&lt;!-- Version de base Angular --&gt;
+			&lt;h1&gt;{{title}}&lt;h1&gt;
+
+			&lt;!-- Version qu'on rencontre souvent --&gt;
+			&lt;h1&gt;{{title | i18n}}&lt;h1&gt;
+
+			&lt;!-- Version non logique  --&gt;
+			&lt;h1 data-i18n="title"&gt;&lt;h1&gt;
+			</code></pre>
+
+			<h4 id="version-avec-un-filter">Version avec un filter</h4>
+			<p>C'est une solution logique si l'on suit le fonctionnement de ses templates, cependant elle possède quelques désavantages :</p>
+			<ul>
+			<li>Mettre systématiquement cette directive</li>
+			<li>Viable si on n'a que 2/3 pages. Trop lourd pour une SPA</li>
+			<li>DRY ??? non</li>
+			</ul>
+			<h3 id="version-avec-une-directive">Version avec une directive</h3>
+			<p>Celle-ci n'est pas logique du tout. On enlève du template son affichage et on traduit un peu à <a href="http://byatoo.com/la-rache/index.php?p=page&amp;name=presentation&amp;id=2&amp;PHPSESSID=cd8hoks49dberr256sntlmpn27" title="la rache">la rache</a>. Elle cumule aux défauts de la solution avec le fiter, la lourdeur.</p>
+			<h2 id="i18n-as-a-service">i18n as a service</h2>
+			<p>Quoi de plus logique que de se dire, i18n est actif oui ou non ? Si oui ok, mais ça ne change pas la logique de mon application. Elle ne doit pas jouer sur nos templates, c'est au niveau de l'app que se joue tout.</p>
+			<h3 id="step-1-notre-service">Step 1 : Notre service</h3>
+			<p>Je bosse sur une SPA dont les données arrivent via une API REST, je me suis basé sur ça pour mon internationalisation. Je contacte mon API et elle me renvoit un JSON clé =&gt; valeur. Simple et super flexible.</p>
+			<h4 id="avant-de-commencer-le-routing">Avant de commencer, le routing</h4>
+			<p>Dans <code>$routeProvider</code> ou <code>$stateProvider</code> d'<a href="https://github.com/angular-ui/ui-router" title="UI-Router for Nested Routing by the AngularUI Team!">UI-router</a> on retrouve la fameuse clé <code>resolve</code> <a href="https://github.com/angular-ui/ui-router/wiki/Quick-Reference#resolve" title="About resolve - UI router AngularJS">cf documentation</a>. Celle-ci possède quelques avantages :
+			- Exécution avant le controller courant
+			- Permet de gérer des dépendances
+			- Résoud automatiquement les promesses</p>
+			<p>Partant de ça, on peut faire beaucoup de choses.</p>
+			<h4 id="notre-service">Notre service</h4>
+			<pre><code>'use strict';
+			app.factory('localize', ['$http', function ($http) {
+			    return {
+			        get: function(myCurrentView) {
+			          return $http.get('/i18n/'+myCurrentView, {cache: true});
+			        }
+			    };
+			}]);
+			</code></pre>
+
+			<p>Ce petit service <strong>localize</strong> est tout simple, il récupère notre traduction et la met dans un cache. Son API est simpliste : <code>localize.get(myCurrentView)</code>.</p>
+			<h4 id="le-service-en-fonctionnement-dans-le-routeur">Le service en fonctionnement dans le routeur</h4>
+			<pre><code>.state('home', {
+			    url : '/',
+			    templateUrl: 'home.html',
+			    controller : 'homeController',
+			    resolve : {
+			        i18n : ['localize',function (localize) {
+			            return localize.get('home');
+			        }]
+			    }
+			})
+			</code></pre>
+
+			<p>Ici notre service est injecté dans le <code>resolve</code>. Celui-ci va donc aller chercher dans mon API la traduction pour la vue <code>home</code>.</p>
+			<p>Ainsi dans mon controller je peux utiliser la traduction en injectant i18n, la clé définie dans mon resolve.</p>
+			<h4 id="dans-mon-controller">Dans mon controller</h4>
+			<pre><code>'use strict';
+
+			app.controller("homeController", [
+			    '$scope', 'i18n', 
+			    function ($scope, i18n) {
+			    $scope = i18n.data
+			}]);
+			</code></pre>
+
+			<p>La solution est ici un peu brutale ( <em>personnellement je préfère mettre mes traductions dans $scope.panel</em> ), on injectera rarement les données ainsi.
+			Comme on peut le voir, nous n'avons non plus une promesse, mais directement son retour. Ainsi <code>i18n.data</code> contient bien mon json de traduction ( <em>Il n'est pas sous forme de string</em> hein :)).</p>
+			<h4 id="usage-avance-dans-le-routeur">Usage avancé dans le routeur</h4>
+			<pre><code>.state('home', {
+			    url : '/',
+			    templateUrl: 'home.html',
+			    controller : 'homeController',
+			    resolve : {
+			        i18n : ['localize',function (localize) {
+			            return localize.get('home');
+			        }]
+			    },
+			    onEnter : function (i18n, PageTitleService) {
+			        PageTitleService.set(i18n.data['title']);
+			    }
+			})
+			</code></pre>
+
+			<p>Ici je peux aussi utiliser i18n dans <code>onEnter()</code> vu que celui-ci s'exécute après mon resolve.</p>
+			<h2 id="conclusion">Conclusion</h2>
+			<p>Voilà désormais, que je fasse toute ma webapp, ou seulement une partie de celle-ci, je ne touche plus à mes templates. Tout est transparent. </p>
+			<p><em>On peut aussi ne pas faire des appels vers une API, mais aller charger des fichiers JSON</em>.</p>
+			<h3 id="i18n-avec-angular-quelques-liens">I18n avec Angular, quelques liens</h3>
+			<ul>
+			<li><a href="http://blog.brunoscopelliti.com/internazionalization-i18n-with-angularjs">Internazionalization (i18n) with AngularJS</a></li>
+			<li><a href="https://github.com/PascalPrecht/angular-translate">angular-translate</a></li>
+			<li><a href="https://github.com/gertn/ng-i18n">ng-i18n - Internationalization module for angular.js</a></li>
+			<li><a href="https://coderwall.com/p/uyrtpq">AngularJS and i18n</a></li>
+			<li><a href="http://www.frangular.com/2012/12/traduction-des-libelles-dans-les-vues-angularjs.html">Traduction des libellés dans les vues AngularJS</a></li>
+			</ul>		
+
+			<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>	
+		</div>
+		<footer class="post-informations">
+			<span class="author">Dhoko</span>
+		</footer>
+	</article>
+</section>
+
+	<script>
+
+		;(function () {
+	
+			var nodesArray = Array.prototype.slice.call(document.querySelectorAll('#content pre,code'));
+
+			nodesArray.forEach(function (item) {
+				item.className = "language-javascript";
+			});
+
+			document.head.insertAdjacentHTML('beforeend','<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700" rel="stylesheet" type="text/css">');
+
+		})();
+	</script>
+	<script src="app/components/prism/prism.js"></script>
+</body>
+</html>
